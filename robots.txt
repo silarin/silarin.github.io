@@ -1,1 +1,1 @@
-Sitemap: http://nemissa.com/sitemap.xml
+Sitemap: https://nemissa.com/sitemap.xml
