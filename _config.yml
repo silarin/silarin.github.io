@@ -1,7 +1,11 @@
-theme: jekyll-theme-minimal
+title: @silarin
+description: >-
+  Python Developer | SQL Data Wrangler | Aspiring Algo Trader
+  <br><br>
+  <a href="#projects">📈 Projects</a><br>
+  <a href="#skills">🚀 Technical Arsenal</a><br>
+  <a href="#contact">📫 Contact</a>
 
-title: "@silarin"
-description: "Python, SQL, and Algorithmic Trading Portfolio"
-
-show_downloads: "false"
+show_downloads: false
 google_analytics: 
+theme: jekyll-theme-minimal
