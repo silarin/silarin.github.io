@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@silarin Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --text: #eaeaea;
+      --card: #111;
+      --accent: #3b82f6;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body.light {
+      --bg: #f9fafb;
+      --text: #111;
+      --card: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    button {
+      cursor: pointer;
+      border: 1px solid var(--text);
+      background: transparent;
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    h1, h2, h3 { margin-top: 20px; }
+
+    .hero {
+      margin-bottom: 60px;
+      animation: fadeUp 0.8s ease;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      padding: 15px;
+      border-radius: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .skills span {
+      display: inline-block;
+      padding: 6px 12px;
+      border: 1px solid var(--text);
+      border-radius: 20px;
+      margin: 5px;
+      transition: transform 0.2s;
+    }
+
+    .skills span:hover {
+      transform: scale(1.1);
+    }
+
+    .container {
+      animation: fadeUp 0.6s ease;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      opacity: 0.6;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>@silarin</h1>
+      <div>
+        <nav>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button onclick="toggleTheme()">🌙</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h2>Python Developer & Algo Trader</h2>
+      <p>I build automated trading systems, optimize data pipelines, and explore quantitative finance.</p>
+    </section>
+
+    <section id="projects">
+      <h3>📈 Projects</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>QuantBot</h4>
+          <p>Mean reversion crypto trading bot.</p>
+        </div>
+        <div class="card">
+          <h4>SQL Analyzer</h4>
+          <p>High-frequency financial database system.</p>
+        </div>
+        <div class="card">
+          <h4>Sentiment Trader</h4>
+          <p>News-based NLP trading signals.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h3>🚀 Skills</h3>
+      <div class="skills">
+        <span>Python</span>
+        <span>SQL</span>
+        <span>Docker</span>
+        <span>Trading APIs</span>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3>📫 Contact</h3>
+      <p>
+        <a href="https://github.com/silarin" target="_blank">GitHub</a> |
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      </p>
+    </section>
+
+    <footer>
+      © 2026 @silarin
+    </footer>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+      localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+    }
+    // Load saved theme
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light");
+    }
+  </script>
+</body>
+</html>
