@@ -3,135 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>@silarin Portfolio</title>
   <meta name="description" content="Python Developer, SQL Data Wrangler, Algo Trader">
-
+  
   <style>
     :root {
-      --bg: #0b0b0c;
-      --text: #eaeaea;
-      --card: #111;
+      --bg: #0f172a;
+      --text: #f1f5f9;
+      --card: #1e293b;
       --accent: #3b82f6;
+      --border: #334155;
+      --subtext: #94a3b8;
     }
 
     body.light {
-      --bg: #f9fafb;
-      --text: #111;
+      --bg: #f8fafc;
+      --text: #0f172a;
       --card: #ffffff;
+      --accent: #2563eb;
+      --border: #e2e8f0;
+      --subtext: #64748b;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
-      transition: all 0.3s ease;
+      transition: background 0.4s ease, color 0.4s ease;
+      line-height: 1.6;
     }
 
     .container {
       max-width: 900px;
       margin: auto;
-      padding: 20px;
-      animation: fadeUp 0.6s ease;
+      padding: 40px 24px;
     }
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 40px;
+      margin-bottom: 80px;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+      padding: 10px 0;
+    }
+
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--accent);
     }
 
     nav a {
-      margin-left: 15px;
+      margin-left: 20px;
       text-decoration: none;
-      color: var(--text);
-      position: relative;
+      color: var(--subtext);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
     }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -3px;
-      left: 0;
-      background: var(--accent);
-      transition: width 0.3s;
-    }
+    nav a:hover { color: var(--accent); }
 
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    button {
+    .theme-toggle {
       cursor: pointer;
-      border: 1px solid var(--text);
-      background: transparent;
-      color: var(--text);
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: transform 0.2s;
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-left: 20px;
+      font-size: 1rem;
     }
-
-    button:hover {
-      transform: scale(1.1);
-    }
-
-    h1, h2, h3 { margin-top: 20px; }
 
     .hero {
-      margin-bottom: 60px;
-      animation: fadeUp 0.8s ease;
+      margin-bottom: 100px;
+      animation: fadeUp 0.8s ease-out;
     }
 
     .hero h2 {
-      font-size: 2rem;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(to right, var(--accent), #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--subtext);
+      max-width: 600px;
+    }
+
+    h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+    }
+
+    h3::after {
+      content: "";
+      height: 1px;
+      flex-grow: 1;
+      background: var(--border);
+      margin-left: 20px;
     }
 
     .grid {
       display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-bottom: 80px;
     }
 
     .card {
       background: var(--card);
-      padding: 15px;
-      border-radius: 12px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .card:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h4 {
+      margin: 0 0 12px 0;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--subtext);
+      font-size: 0.95rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 80px;
     }
 
     .skills span {
-      display: inline-block;
-      padding: 6px 12px;
-      border: 1px solid var(--text);
-      border-radius: 20px;
-      margin: 5px;
-      transition: transform 0.2s;
+      font-family: ui-monospace, monospace;
+      font-size: 0.85rem;
+      background: var(--card);
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--subtext);
+      transition: all 0.2s;
     }
 
     .skills span:hover {
-      transform: scale(1.15);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    #contact a {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 2px;
     }
 
     footer {
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
       text-align: center;
-      margin-top: 60px;
-      opacity: 0.6;
+      font-size: 0.85rem;
+      color: var(--subtext);
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      nav { margin-left: -20px; }
     }
   </style>
 </head>
@@ -139,90 +210,84 @@
 <body>
   <div class="container">
 
-    <!-- Header -->
     <header>
       <h1>@silarin</h1>
-      <div>
+      <div style="display: flex; align-items: center;">
         <nav>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </nav>
-        <button onclick="toggleTheme()">🌙</button>
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
       </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
-      <h2>Python Developer & Algo Trader</h2>
+      <h2>Python Developer & <br>Algo Trader</h2>
       <p>
-        I build automated trading systems, optimize data pipelines, and explore quantitative finance.
+        I build automated trading systems, optimize high-throughput data pipelines, and explore the edges of quantitative finance.
       </p>
     </section>
 
-    <!-- Projects -->
     <section id="projects">
-      <h3>📈 Projects</h3>
+      <h3>Selected Projects</h3>
       <div class="grid">
         <div class="card">
           <h4>QuantBot</h4>
-          <p>Mean reversion crypto trading bot.</p>
+          <p>Mean reversion crypto trading bot utilizing real-time WebSocket data and custom risk management.</p>
         </div>
 
         <div class="card">
           <h4>SQL Analyzer</h4>
-          <p>High-frequency financial database system.</p>
+          <p>Optimized financial database architecture capable of handling millions of ticks per second.</p>
         </div>
 
         <div class="card">
           <h4>Sentiment Trader</h4>
-          <p>News-based NLP trading signals.</p>
+          <p>NLP-driven engine that extracts trading signals from global news feeds and social sentiment.</p>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
     <section id="skills">
-      <h3>🚀 Skills</h3>
+      <h3>Technical Stack</h3>
       <div class="skills">
         <span>Python</span>
-        <span>SQL</span>
+        <span>SQL / PostgreSQL</span>
         <span>Docker</span>
+        <span>Pandas / NumPy</span>
         <span>Trading APIs</span>
+        <span>AWS / Cloud</span>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h3>📫 Contact</h3>
-      <p>
-        <a href="https://github.com/silarin" target="_blank">GitHub</a> |
+    <section id="contact" style="margin-bottom: 100px;">
+      <h3>Get In Touch</h3>
+      <p style="font-size: 1.5rem; font-weight: 500;">
+        Let's build something efficient. <br>
+        <a href="https://github.com/silarin" target="_blank">GitHub</a> &nbsp; 
         <a href="https://linkedin.com" target="_blank">LinkedIn</a>
       </p>
     </section>
 
-    <!-- Footer -->
     <footer>
-      © 2026 @silarin
+      Built by @silarin &bull; 2026
     </footer>
 
   </div>
 
-  <!-- Script -->
   <script>
     function toggleTheme() {
-      document.body.classList.toggle("light");
-      localStorage.setItem(
-        "theme",
-        document.body.classList.contains("light") ? "light" : "dark"
-      );
+      const isLight = document.body.classList.toggle("light");
+      const btn = document.getElementById("themeBtn");
+      btn.innerText = isLight ? "☀️" : "🌙";
+      localStorage.setItem("theme", isLight ? "light" : "dark");
     }
 
-    // Load saved theme
     if (localStorage.getItem("theme") === "light") {
       document.body.classList.add("light");
+      document.getElementById("themeBtn").innerText = "☀️";
     }
   </script>
-
 </body>
 </html>
