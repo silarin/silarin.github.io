@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@silarin Portfolio</title>
   <meta name="description" content="Python Developer, SQL Data Wrangler, Algo Trader">
+  <script>
+    function toggleTheme() {
+      const isLight = document.body.classList.toggle("light");
+      const btn = document.getElementById("themeBtn");
+      btn.innerText = isLight ? "☀️" : "🌙";
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    }
+
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light");
+      document.getElementById("themeBtn").innerText = "☀️";
+    }
+  </script>
   
   <style>
     :root {
@@ -275,19 +288,5 @@
     </footer>
 
   </div>
-
-  <script>
-    function toggleTheme() {
-      const isLight = document.body.classList.toggle("light");
-      const btn = document.getElementById("themeBtn");
-      btn.innerText = isLight ? "☀️" : "🌙";
-      localStorage.setItem("theme", isLight ? "light" : "dark");
-    }
-
-    if (localStorage.getItem("theme") === "light") {
-      document.body.classList.add("light");
-      document.getElementById("themeBtn").innerText = "☀️";
-    }
-  </script>
 </body>
 </html>
